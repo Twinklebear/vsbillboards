@@ -6,7 +6,7 @@ set(vsbillboards_INSTALL_DIR "${vsbillboards_SOURCE_DIR}/bin")
 # Use modified FindSDL2 and FindGLEW that will work with my windows setup
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${vsbillboards_SOURCE_DIR}/cmake")
 
-set(lfwatch_DIR "${Asteroids_SOURCE_DIR}/external/lfwatch")
+set(lfwatch_DIR "${vsbillboards_SOURCE_DIR}/external/lfwatch")
 set(lfwatch_LIBRARY "${lfwatch_DIR}/lib/liblfwatch.a")
 set(lfwatch_INCLUDE_DIR "${lfwatch_DIR}/include")
 ExternalProject_Add(lfwatch
