@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 2.8)
-project(FastBillboards)
+project(vsbillboards)
 include(ExternalProject)
 
-set(FastBillboards_INSTALL_DIR "${FastBillboards_SOURCE_DIR}/bin")
+set(vsbillboards_INSTALL_DIR "${vsbillboards_SOURCE_DIR}/bin")
 # Use modified FindSDL2 and FindGLEW that will work with my windows setup
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${FastBillboards_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${vsbillboards_SOURCE_DIR}/cmake")
 
 set(lfwatch_DIR "${Asteroids_SOURCE_DIR}/external/lfwatch")
 set(lfwatch_LIBRARY "${lfwatch_DIR}/lib/liblfwatch.a")
