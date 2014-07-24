@@ -6,13 +6,13 @@ High Level Explanation
 -
 The quads are expanded out from a single point in the vertex shader to form a full square.
 This is done by finding the horizontal and vertical vectors spanning the plane perpindicular
-to the eye direction and translating the position along these vectors in position/negative
+to the eye direction and translating the position along these vectors in positive/negative
 directions based on its vertex id.
 
 This lets us create these billboards easily while only having to send the center points of
 the quads along with any other per-instance attributes we may want (sprite ids, colors, w/e).
 
-A video of this demo running can be found on [youtube](http://youtu.be/7W_KPzwMBCU)
+A video of this demo running can be found on [youtube](http://youtu.be/7W_KPzwMBCU).
 
 Controls for the demo
 -
