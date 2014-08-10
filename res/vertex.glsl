@@ -1,13 +1,10 @@
 #version 330 core
 
-//Signs for the directions along the horizontal and
-//vertical vectors to expand the points along, indexed
-//by vertex id
-const int signs[8] = int[8](
-	1, 1,
-	-1, 1,
-	1, -1,
-	-1, -1
+const vec2 quad[4] = vec2[4](
+	vec2(-1, -1),
+	vec2(1, -1),
+	vec2(-1, 1),
+	vec2(1, 1)
 );
 
 //Viewing matrices and eye pos
@@ -35,17 +32,13 @@ void main(void){
 	//Select the color (uv, w/e) for this sprite and vertex
 	fcolor = colors[sprite_id * 4 + gl_VertexID];
 
-	//Get the normal for the plane so that it's oriented facing the camera
-	vec3 n = normalize(pos - eye_pos.xyz);
-	//Now determine the planes horizontal and vertical vectors using +Y as upish
-	vec3 horiz = normalize(cross(vec3(0, 1, 0), n));
-	vec3 vert = normalize(cross(horiz, n));
-	vec4 h = vec4(horiz, 0);
-	vec4 v = vec4(vert, 0);
-
 	//Expand out this vertex to its point on the quad
-	gl_Position = vec4(pos, 1) + signs[gl_VertexID * 2] * h + signs[gl_VertexID * 2 + 1] * v;
+	gl_Position = vec4(pos.xy + quad[gl_VertexID], pos.z, 1);
 	//Transform and project the quad
-	gl_Position = proj * view * gl_Position;
+	mat4 modified_view = view;
+	modified_view[0] = vec4(1, 0, 0, 0);
+	modified_view[1] = vec4(0, 1, 0, 0);
+	modified_view[2] = vec4(0, 0, 1, 0);
+	gl_Position = proj * modified_view * gl_Position;
 }
 
